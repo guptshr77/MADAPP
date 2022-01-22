@@ -27,9 +27,9 @@ public class UserController {
 		
 		List<User> userList = userbo.login(user);
 		if(user != null) {
-			//Yay they logged in
+			//send to Calendar page
 		}else {
-			//send message
+			//send errar message
 		}
 }
 	

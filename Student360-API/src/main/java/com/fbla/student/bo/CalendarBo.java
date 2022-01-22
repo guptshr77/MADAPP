@@ -4,8 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.fbla.student.dal.CalendarDAO;
+import com.fbla.student.dal.EventsDAO;
+import com.fbla.student.dal.ExtracurricularDAO;
+import com.fbla.student.dal.ScheduleDAO;
 import com.fbla.student.model.Calendar;
+import com.fbla.student.model.User;
+import com.fbla.student.model.Class;
+import com.fbla.student.model.Event;
+import com.fbla.student.model.Extracurricular;
 
+import java.sql.Date;
 import java.time.*;
 import java.util.List; 
 
@@ -13,18 +21,34 @@ import java.util.List;
 public class CalendarBo {
 	
 	@Autowired
-	private CalendarDAO calendardao;
+	private EventsDAO eventsdao;
+	private ExtracurricularDAO actdao;
+	private ScheduleDAO scheduledao;
+	private Calendar calendar;
 	
-	public List<Calendar> getCalendar(String type, LocalDate date){
+	public Calendar getCalendar(String type, Date date, int userid){
+		
 		if(type.equals("monthly")) {
-			//monthly calendar
-		}else if(type.equals("weekly")) {
-			//weekly calendar
+			
+			int month = date.getMonth();
+			
+			List<Class> schedule = scheduledao.dailySchedule(userid);
+			List<Event> events = eventsdao.eventsMonthly(month);
+			List<Extracurricular> acts = actdao.monthlyExtracurricular(userid, month);
+			
+			calendar = new Calendar(schedule, events, acts);
+			
 		}else if(type.equals("daily")){
-			//daily calendar 
+			
+			List<Class> schedule = scheduledao.dailySchedule(userid);
+			List<Event> events = eventsdao.eventsDaily(date);
+			List<Extracurricular> acts = actdao.dailyExtracurricular(userid, date);
+				
+			calendar = new Calendar(schedule, events, acts);
+			
 		}
 		
-		return null;
+		return calendar;
 	}
 
 }

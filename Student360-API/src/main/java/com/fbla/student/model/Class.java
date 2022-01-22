@@ -1,24 +1,22 @@
 package com.fbla.student.model;
 
-import java.time.*;
+import java.sql.Time;
 
 public class Class {
 	private int classId;
 	private String classname;
 	private int roomnum;
-	private LocalTime startTime;
-	private LocalTime endTime;
-	private String color;
+	private Time startTime;
+	private Time endTime;
 	
-	public Class(int classId, String classname, int roomnum, LocalTime startTime, LocalTime endTime, String color) {
+	public Class(int classId, String classname, int roomnum, Time startTime, Time endTime) {
 		this.classId = classId;
 		this.classname = classname;
 		this.roomnum = roomnum;
 		this.startTime = startTime;
 		this.endTime = endTime;
-		this.color = color;
 	}
-	
+
 	public int getClassId() {
 		return classId;
 	}
@@ -37,24 +35,16 @@ public class Class {
 	public void setRoomnum(int roomnum) {
 		this.roomnum = roomnum;
 	}
-	public LocalTime getStartTime() {
+	public Time getStartTime() {
 		return startTime;
 	}
-	public void setStartTime(LocalTime startTime) {
+	public void setStartTime(Time startTime) {
 		this.startTime = startTime;
 	}
-	public LocalTime getEndTime() {
+	public Time getEndTime() {
 		return endTime;
 	}
-	public void setEndTime(LocalTime endTime) {
+	public void setEndTime(Time endTime) {
 		this.endTime = endTime;
 	}
-	public String getColor() {
-		return color;
-	}
-	public void setColor(String color) {
-		this.color = color;
-	}
-
-	
 }

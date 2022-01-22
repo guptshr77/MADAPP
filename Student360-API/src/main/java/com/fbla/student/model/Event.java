@@ -1,16 +1,15 @@
 package com.fbla.student.model;
 
-import java.time.*;
+import java.sql.Date;
 
 public class Event {
-	private String eventId;
-	private LocalDateTime dateTime;
+	private int eventId;
+	private Date dateTime;
 	private String description;
 	private String color;
 	private String title;
 	
-	public Event(String eventId, LocalDateTime dateTime, String description, String color, String title) {
-		super();
+	public Event(int eventId, Date dateTime, String description, String color, String title) {
 		this.eventId = eventId;
 		this.dateTime = dateTime;
 		this.description = description;
@@ -18,16 +17,27 @@ public class Event {
 		this.title = title;
 	}
 	
-	public String getEventId() {
+	
+
+	public Event(int eventId, Date dateTime, String title, String description) {
+		this.eventId = eventId;
+		this.dateTime = dateTime;
+		this.title = title;
+		this.description = description;
+	}
+
+
+
+	public int getEventId() {
 		return eventId;
 	}
-	public void setEventId(String eventId) {
+	public void setEventId(int eventId) {
 		this.eventId = eventId;
 	}
-	public LocalDateTime getDateTime() {
+	public Date getDateTime() {
 		return dateTime;
 	}
-	public void setDateTime(LocalDateTime dateTime) {
+	public void setDateTime(Date dateTime) {
 		this.dateTime = dateTime;
 	}
 	public String getDescription() {

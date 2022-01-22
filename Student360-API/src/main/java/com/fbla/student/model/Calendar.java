@@ -1,6 +1,9 @@
 package com.fbla.student.model;
 
 import java.util.List;
+import com.fbla.student.model.Class;
+import com.fbla.student.model.Event;
+import com.fbla.student.model.Extracurricular;
 
 public class Calendar {
 
@@ -8,12 +11,11 @@ public class Calendar {
 	private List<Event> events;
 	private List<Extracurricular> extracurriculars;
 	
-//	public Calendar(List<Class> classes, List<Event> events, List<Extracurricualr> extracurriculars) {
-//		super();
-//		this.classes = classes;
-//		this.events = events;
-//		this.extracurriculars = extracurriculars;
-//	}
+	public Calendar(List<Class> classes, List<Event> events, List<Extracurricular> extracurriculars) {
+		this.classes = classes;
+		this.events = events;
+		this.extracurriculars = extracurriculars;
+	}
 	
 	public List<Class> getClasses() {
 		return classes;
@@ -30,9 +32,9 @@ public class Calendar {
 	public List<Extracurricular> getExtracurriculars() {
 		return extracurriculars;
 	}
-//	public void setExtracurriculars(List<Extracurricualr> extracurriculars) {
-//		this.extracurriculars = extracurriculars;
-//	}
+	public void setExtracurriculars(List<Extracurricular> extracurriculars) {
+		this.extracurriculars = extracurriculars;
+	}
 	
 	
 	
