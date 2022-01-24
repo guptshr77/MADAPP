@@ -16,7 +16,7 @@ import com.fbla.student.model.Calendar;
 import com.fbla.student.model.Event;
 import com.fbla.student.model.Extracurricular;
 import com.fbla.student.model.User;
-import com.fbla.student.model.Class;
+import com.fbla.student.model.SchoolClass;
 
 @Component
 public class ExtracurricularDAO {
@@ -41,7 +41,7 @@ public class ExtracurricularDAO {
 	}
 	
 	public List<Extracurricular> monthlyExtracurricular(int userid, int month){
-		String query = "SELECT * FROM extracurricular WHERE (SELECT EXTRACT(MONTH FROM edate)::integer) = ?";
+		String query = "SELECT e.* FROM extracurricular e, user_extracurricular ue WHERE e.act_id = ue.act_id AND	EXTRACT(MONTH FROM e.edate)::integer = ? AND ue.user_id = ?";
 		
 		return jdbcTemplate.query(query,
 				(rs, rowNum) ->
@@ -54,6 +54,33 @@ public class ExtracurricularDAO {
 						rs.getTime("end_time"),
 						rs.getDate("edate")),
 				new Object[] {userid,month});
+	}
+	
+	public String addActivity(int userId, int actId) {
+		String stmt = "INSERT INTO user_extracurricular(user_id, act_id) VALUES(?,?)";
+		
+		jdbcTemplate.execute(stmt, new PreparedStatementCallback<Boolean>() {
+			@Override
+			public Boolean doInPreparedStatement(PreparedStatement ps)
+				throws SQLException, DataAccessException {
+					ps.setInt(1, userId);
+					ps.setInt(2, actId);
+					
+					return ps.execute();
+			}
+		});
+		
+		return "Activity added";
+	}
+	
+	public List<Extracurricular> getAllActivities(){
+		String query = "SELECT * FROM extracurricular ORDER BY title";
+		
+		return jdbcTemplate.query(query,
+				(rs, rowNum) ->
+				new Extracurricular(
+						rs.getInt("act_id"),
+						rs.getString("title")));
 	}
 	
 }

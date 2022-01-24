@@ -19,6 +19,5 @@ public class LunchMenuController {
 	@GetMapping ("/lunchmenu")
 	public List<LunchMenu> getLunchMenu() {
 		return lunchMenuBO.getMenu();
-		//pass the menu to VS Code
 	}
 }

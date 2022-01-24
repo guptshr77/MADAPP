@@ -12,6 +12,12 @@ public class Extracurricular {
 	private Time endTime;
 	private Date date;
 	
+	public Extracurricular(int actId, String title) {
+		super();
+		this.actId = actId;
+		this.title = title;
+	}
+
 	public Extracurricular(int actId, String title, String location, String descr, Time startTime, Time endTime, Date date) {
 		this.actId = actId;
 		this.title = title;

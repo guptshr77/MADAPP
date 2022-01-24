@@ -36,7 +36,7 @@ public class EventsDAO {
 	}
 	
 	public List<Event> eventsMonthly(int month) {
-		String query = "SELECT * FROM extracurricular WHERE (SELECT EXTRACT(MONTH FROM dates)::integer)";
+		String query = "SELECT * FROM events WHERE EXTRACT(MONTH FROM dates)::integer = ?";
 		
 		return jdbcTemplate.query(query, 
 				(rs, rowNum) ->

@@ -2,14 +2,15 @@ package com.fbla.student.model;
 
 import java.sql.Time;
 
-public class Class {
+public class SchoolClass {
+
 	private int classId;
 	private String classname;
 	private int roomnum;
 	private Time startTime;
 	private Time endTime;
 	
-	public Class(int classId, String classname, int roomnum, Time startTime, Time endTime) {
+	public SchoolClass(int classId, String classname, int roomnum, Time startTime, Time endTime) {
 		this.classId = classId;
 		this.classname = classname;
 		this.roomnum = roomnum;
@@ -17,6 +18,11 @@ public class Class {
 		this.endTime = endTime;
 	}
 
+	public SchoolClass(int classId, String classname) {
+		this.classId = classId;
+		this.classname = classname;
+	}
+	
 	public int getClassId() {
 		return classId;
 	}

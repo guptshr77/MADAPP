@@ -20,16 +20,43 @@ public class UserDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	public List<User> login(User user) {
-		String query = "SELECT userid, firstname, lastname, username FROM suser WHERE username=? AND password=?";
+	//'EVERYTHING IS A STRING!!!!!!!! - Gabriela Nicole Waszak 2022-01-22'
+
+	public User login(User user) {
+		String query = "SELECT user_id, firstname, lastname, username FROM suser WHERE username=? AND password=?";
 				
-		return jdbcTemplate.query(query,
+			List<User> luser = jdbcTemplate.query(query,
 				(rs, rowNum) ->
 				new User(
-						rs.getInt("userid"),
+						rs.getInt("user_id"),
 						rs.getString("firstname"),
 						rs.getString("lastname"),
 						rs.getString("username")),
 				new Object[] {user.getUsername(),user.getPassword()});
+		if(luser.size()>0) 
+			return luser.get(0);
+		else
+			return null;
 	}
+	
+    public User addUser(User user){
+        String stmt = "INSERT INTO suser(userid, username, password, firstname, lastname) VALUES(?, ?, ?, ?, ?)";
+        
+        jdbcTemplate.execute(stmt, new PreparedStatementCallback<Boolean>(){
+        	@Override
+        	public Boolean doInPreparedStatement(PreparedStatement ps)
+	        	throws SQLException, DataAccessException {
+	        		ps.setInt(1, user.getUserId());
+	        		ps.setString(2, user.getUsername());
+	        		ps.setString(3, user.getPassword());
+	        		ps.setString(4, user.getFirstName());
+	        		ps.setString(5, user.getLastName());
+	        		
+	        		return ps.execute();
+	        	}
+        });
+        
+        return user;
+    }
+    
 }

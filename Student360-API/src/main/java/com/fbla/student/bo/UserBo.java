@@ -14,7 +14,11 @@ public class UserBo {
 	@Autowired
 	private UserDAO userdao;
 	
-	public List<User> login(User user) {
+	public User login(User user) {
 		return userdao.login(user);
+	}
+	
+	public User addUser(User user) {
+		return userdao.addUser(user);
 	}
 }

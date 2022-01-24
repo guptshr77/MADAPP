@@ -1,26 +1,26 @@
 package com.fbla.student.model;
 
 import java.util.List;
-import com.fbla.student.model.Class;
+import com.fbla.student.model.SchoolClass;
 import com.fbla.student.model.Event;
 import com.fbla.student.model.Extracurricular;
 
 public class Calendar {
 
-	private List<Class> classes;
+	private List<SchoolClass> classes;
 	private List<Event> events;
 	private List<Extracurricular> extracurriculars;
 	
-	public Calendar(List<Class> classes, List<Event> events, List<Extracurricular> extracurriculars) {
+	public Calendar(List<SchoolClass> classes, List<Event> events, List<Extracurricular> extracurriculars) {
 		this.classes = classes;
 		this.events = events;
 		this.extracurriculars = extracurriculars;
 	}
 	
-	public List<Class> getClasses() {
+	public List<SchoolClass> getClasses() {
 		return classes;
 	}
-	public void setClasses(List<Class> classes) {
+	public void setClasses(List<SchoolClass> classes) {
 		this.classes = classes;
 	}
 	public List<Event> getEvents() {

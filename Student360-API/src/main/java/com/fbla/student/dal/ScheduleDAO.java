@@ -16,7 +16,7 @@ import com.fbla.student.model.Calendar;
 import com.fbla.student.model.Event;
 import com.fbla.student.model.Extracurricular;
 import com.fbla.student.model.User;
-import com.fbla.student.model.Class;
+import com.fbla.student.model.SchoolClass;
 
 @Component
 public class ScheduleDAO {
@@ -24,12 +24,12 @@ public class ScheduleDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	public List<Class> dailySchedule(int userid){
+	public List<SchoolClass> dailySchedule(int userid){
 		String query = "SELECT c.* FROM class c, user_class uc WHERE c.class_id = uc.class_id AND uc.user_id = ?";
 		
 		return jdbcTemplate.query(query,
 				(rs, rowNum) ->
-				new Class(
+				new SchoolClass(
 						rs.getInt("class_id"),
 						rs.getString("classname"),
 						rs.getInt("roomnum"),
