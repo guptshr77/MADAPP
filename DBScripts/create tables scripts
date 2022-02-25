@@ -1,0 +1,79 @@
+CREATE TABLE suser (
+	user_id SERIAL PRIMARY KEY,
+	username VARCHAR (20) UNIQUE NOT NULL,
+	password VARCHAR (20) NOT NULL,
+	firstname VARCHAR (20) NOT NULL,
+	lastname VARCHAR (20) NOT NULL,
+	usertype BOOLEAN
+);
+/*true-student false-teacher*/
+
+CREATE TABLE class(
+	class_id SERIAL PRIMARY KEY,
+	classname VARCHAR (50) NOT NULL,
+	teacher_id INT,
+	FOREIGN KEY (teacher_id)
+		REFERENCES suser (user_id),
+	roomnum INT NOT NULL,
+	start_time TIME NOT NULL,
+	end_time TIME NOT NULL,
+	color VARCHAR (20)
+);
+
+CREATE TABLE message (
+	msg_id SERIAL PRIMARY KEY,
+	sender_id INT,
+	FOREIGN KEY (sender_id)
+		REFERENCES suser (user_id),
+	recipient_id INT,
+	FOREIGN KEY (recipient_id)
+		REFERENCES suser (user_id),
+	subject VARCHAR (50), 
+	msg_content VARCHAR (500) NOT NULL,
+	msg_date DATE
+);
+
+CREATE TABLE extracurricular (
+	act_id SERIAL PRIMARY KEY,
+	title VARCHAR (30) NOT NULL,
+	descr VARCHAR (800),
+	teacher_id INT,
+	FOREIGN KEY (teacher_id)
+		REFERENCES suser (user_id),
+	elocation VARCHAR (20) NOT NULL,
+	time_start TIME NOT NULL,
+	time_end TIME NOT NULL,
+	edate DATE NOT NULL
+);
+
+CREATE TABLE user_class(
+	user_id INT,
+	FOREIGN KEY (user_id)
+		REFERENCES suser (user_id),
+	class_id INT,
+	FOREIGN KEY (class_id)
+		REFERENCES class (class_id)
+);
+
+CREATE TABLE user_extracurricular(
+	user_id INT,
+	FOREIGN KEY (user_id)
+		REFERENCES suser (user_id),
+	act_id INT, 
+	FOREIGN KEY (act_id)
+		REFERENCES extracurricular (act_id)
+);
+CREATE TABLE lunch_menu(
+	weekday_id VARCHAR PRIMARY KEY, 
+	fooditems VARCHAR (500) NOT NULL,
+	grabNGo VARCHAR (500) NOT NULL,
+	milks VARCHAR (300) NOT NULL
+);
+
+CREATE TABLE events(
+	event_id SERIAL PRIMARY KEY,
+	dates TIMESTAMP NOT NULL,
+	title VARCHAR (20),
+	descr VARCHAR (200), 
+	color VARCHAR (20)
+);

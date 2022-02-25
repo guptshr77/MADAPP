@@ -1,0 +1,13 @@
+DROP TABLE lunch_menu;
+DROP TABLE events;
+
+DROP TABLE user_class;
+DROP TABLE user_message;
+DROP TABLE user_extracurricular;
+
+DROP TABLE class;
+DROP TABLE message;
+DROP TABLE extracurricular;
+
+
+DROP TABLE suser;

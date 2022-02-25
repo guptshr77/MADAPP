@@ -41,9 +41,15 @@ public class CalendarController {
 	public List<Extracurricular> getAllActivities() {
 		return calendarbo.getAllActivities();
 	}
+
+	
+	@GetMapping("/getuseractivity")
+	public List<Extracurricular> getUserActivities(@RequestParam(value = "userid", defaultValue = "null") int userId) {
+		return calendarbo.getActivities(userId);
+	}
 	
 	@GetMapping("/addactivity")
-	public String addSchedule(@RequestParam(value = "user_id", defaultValue = "null") int userId,
+	public String addSchedule(@RequestParam(value = "userid", defaultValue = "null") int userId,
 							@RequestParam(value = "act_id", defaultValue = "null") int actId) {
 		return calendarbo.addActivity(userId, actId);
 	}

@@ -63,4 +63,8 @@ public class CalendarBo {
 		return actdao.addActivity(userId, actId);
 	}
 
+	public List<Extracurricular> getActivities(int userId) {
+		return actdao.getActivities(userId);
+	}
+
 }
