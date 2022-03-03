@@ -42,7 +42,7 @@ public class MessageDAO {
 	}
 	
 	public List<Message> getMessages(int userId){
-		String query = "SELECT u.user_id, u.firstname, u.lastname, m.subject, m.msg_content m.msg_id, m.msg_date sFROM message m, suser u WHERE m.sender_id = u.user_id AND recipient_id = ? ORDER BY msg_id DESC";
+		String query = "SELECT u.user_id, u.firstname, u.lastname, m.subject, m.msg_content, m.msg_id, m.msg_date FROM message m, suser u WHERE m.sender_id = u.user_id AND recipient_id = ? ORDER BY m.msg_id DESC";
 		
 		return jdbcTemplate.query(query,
 				(rs, rowNum) ->
@@ -51,6 +51,22 @@ public class MessageDAO {
 						rs.getString("subject"),
 						rs.getString("msg_content"),
 						rs.getInt("msg_id"),
+						rs.getDate("msg_date")),
+				new Object[] {userId});
+	}
+
+
+
+	public List<Message> getSentMessages(int userId){
+		String query = "SELECT u.user_id, u.firstname, u.lastname, m.subject, m.msg_content, m.msg_id, m.msg_date FROM message m, suser u WHERE m.recipient_id = u.user_id AND sender_id = ? ORDER BY m.msg_id DESC";
+		
+		return jdbcTemplate.query(query,
+				(rs, rowNum) ->
+				new Message(
+						new User(rs.getInt("user_id"),rs.getString("firstname"), rs.getString("lastname")),
+						rs.getInt("msg_id"), 
+						rs.getString("subject"),
+						rs.getString("msg_content"),
 						rs.getDate("msg_date")),
 				new Object[] {userId});
 	}

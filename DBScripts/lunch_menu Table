@@ -1,29 +1,29 @@
 INSERT INTO lunch_menu (weekday_id, fooditems, grabNGo, milks)
 	VALUES ('Monday', 
-			'Cinnamon French Toast, Cheese Omelet,Chilled Applesauce', 
-			'Hamburger, Cheese Quesadilla Pizza, Chef Salad, Chilled Applesauce',
-			'Chocolate Milk, Skim Milk');
+			'Cinnamon French Toast', 
+			'Hamburger',
+			'Chocolate Milk');
 					
 INSERT INTO lunch_menu (weekday_id, fooditems, grabNGo, milks)
 	VALUES ('Tuesday',
-			'Taco Nachos, Refried Beans, Chilled Peaches, Mini Churros',
-			'Hamburger, Cheese Quesadilla Pizza, Chef Salad, Chilled Applesauce',
-			'Chocolate Milk, Skim Milk');
+			'Taco Nachos',
+			'Hamburger',
+			'Chocolate Milk');
 
 INSERT INTO lunch_menu (weekday_id, fooditems, grabNGo, milks)
 	VALUES ('Wednesday',
-			'Mashed Potato Bowl, Chilled Mixed Fruit, Double Chocolate Chip Cookie',
-			'Hamburger, Cheese Quesadilla Pizza, Chef Salad, Chilled Applesauce',
-			'Chocolate Milk, Skim Milk');
+			'Mashed Potato Bowl',
+			'Hamburger',
+			'Chocolate Milk');
 					
 INSERT INTO lunch_menu (weekday_id, fooditems, grabNGo, milks)
 	VALUES ('Thursday',
-			'Asian Orange Chicken,Steamed Broccoli,Chilled Manarin Oranges',
-			'Hamburger, Cheese Quesadilla Pizza, Chef Salad, Chilled Applesauce',
-			'Chocolate Milk, Skim Milk');
+			'Asian Orange Chicken',
+			'Hamburger',
+			'Chocolate Milk');
 					
 INSERT INTO lunch_menu (weekday_id, fooditems, grabNGo, milks)
 	VALUES ('Friday',
-			'Mac&Cheese, Steamed Peas & Carrots,Orange Sherbet',
-			'Hamburger,Cheese Quesadilla Pizza,Chef Salad,Chilled Applesauce',
-			'Chocolate Milk, Skim Milk');
+			'Mac&Cheese',
+			'Hamburger',
+			'Chocolate Milk');

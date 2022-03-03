@@ -37,5 +37,10 @@ public class MessageController {
 	public List<Message> getMessage(@RequestParam(value = "user_id", defaultValue = "null") int userId) {
 		return messagebo.getMessages(userId);
 	}
+	
+	@GetMapping("/getSentMessages")
+	public List<Message> getSentMessages(@RequestParam(value = "user_id", defaultValue = "null") int userId) {
+		return messagebo.getSentMessages(userId);
+	}
 
 }

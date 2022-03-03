@@ -12,6 +12,7 @@ public class Message {
 	private String msgContent;
 	private User user;
 	private Date datetime; 
+	private User userSent;
 	
 	public Message(int msgId,int userId ,int recipientUserId, String subject, String msgContent) {
 		this.msgId = msgId;
@@ -37,6 +38,13 @@ public class Message {
 		this.msgContent = msgContent;
 	}
 
+	public Message(User userSent, int msgId, String subject, String msgContent, Date datetime) {
+		this.userSent = userSent;
+		this.msgId = msgId;
+		this.subject = subject;
+		this.msgContent = msgContent;
+		this.datetime = datetime;
+	}
 
 	public int getMsgId() {
 		return msgId;

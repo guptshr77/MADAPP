@@ -21,4 +21,8 @@ public class MessageBo {
 	public List<Message> getMessages(int userId){
 		return messagedao.getMessages(userId);
 	}
+	
+	public List<Message> getSentMessages(int userId){
+		return messagedao.getSentMessages(userId);
+	}
 }
