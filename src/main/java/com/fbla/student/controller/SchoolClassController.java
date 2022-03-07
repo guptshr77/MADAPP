@@ -28,6 +28,11 @@ public class SchoolClassController {
 		return schoolClassBo.addClass(userId, classId);
 	}
 	
+	@GetMapping("/getschedule")
+	public List<SchoolClass> addSchedule(@RequestParam(value = "user_id", defaultValue = "null") int userId) {
+		return schoolClassBo.getClasses(userId);
+	}
+	
 	@GetMapping("/getallclasses")
 	public List<SchoolClass> getAllClasses() {
 		 return schoolClassBo.getAllClasses();

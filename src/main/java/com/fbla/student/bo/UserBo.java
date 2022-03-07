@@ -21,4 +21,8 @@ public class UserBo {
 	public User addUser(User user) {
 		return userdao.addUser(user);
 	}
+	
+	public List<User> teachers(){
+		return userdao.teachers();
+	}
 }

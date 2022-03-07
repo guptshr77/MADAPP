@@ -22,7 +22,7 @@ INSERT INTO events (dates, title, descr, color)
 VALUES('2022-04-29', 'Spring Ball', 'Winter school dance', '#46bca3');
 
 INSERT INTO events (dates, title, descr, color)
-VALUES ('2022-05-27', 'Senior Holiday', 'Senior\'s day off', '#846ea0');
+VALUES ('2022-05-27', 'Senior Holiday', 'Senior''s day off', '#846ea0');
 
 INSERT INTO events (dates, title, descr, color)
-VALUES('2022-06-11', 'Graduation', 'Senior\'s graduation', '#846ea0');
+VALUES('2022-06-11', 'Graduation', 'Senior''s graduation', '#846ea0');

@@ -23,12 +23,12 @@ public class MessageController {
 	private MessageBo messagebo;
 	
 	@GetMapping("/sendMessage")
-	public String sendMessage(@RequestParam(value = "user_id", defaultValue = "null") int userid,
-						@RequestParam(value = "recipient_user_id", defaultValue = "null") int recipeintUserId,
+	public String sendMessage(@RequestParam(value = "user_id", defaultValue = "null") String userid,
+						@RequestParam(value = "recipient_id", defaultValue = "null") String recipeintId,
 						@RequestParam(value = "subject", defaultValue = "null") String subject,
 						@RequestParam(value = "msg_content", defaultValue = "null") String msgContent) {
 	
-		Message message = new Message(userid, recipeintUserId, subject, msgContent);
+		Message message = new Message(Integer.parseInt(userid),Integer.parseInt(recipeintId), subject, msgContent);
 		
 		return messagebo.sendMessage(message);
 	}

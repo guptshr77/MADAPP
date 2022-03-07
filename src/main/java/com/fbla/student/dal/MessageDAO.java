@@ -22,7 +22,7 @@ public class MessageDAO {
 	private JdbcTemplate jdbcTemplate;
 	
 	public String sendMessage(Message message) {
-		String stmt = "INSERT INTO message(sender_id, recipient_user_id, subject, msg_content) VALUES(?, ?, ?, ?)";
+		String stmt = "INSERT INTO message(sender_id, recipient_id, subject, msg_content) VALUES(?, ?, ?, ?)";
 		
 		jdbcTemplate.execute(stmt, new PreparedStatementCallback<Boolean>() {
 			@Override

@@ -7,7 +7,7 @@ DROP TABLE user_extracurricular;
 
 DROP TABLE class;
 DROP TABLE message;
+DROP TABLE activities;
 DROP TABLE extracurricular;
-
 
 DROP TABLE suser;

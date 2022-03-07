@@ -11,6 +11,7 @@ public class Extracurricular {
 	private Time startTime;
 	private Time endTime;
 	private Date date;
+	private int teacherId;
 	
 	public Extracurricular(int actId, String title) {
 		super();
@@ -26,7 +27,14 @@ public class Extracurricular {
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.date = date;
-	}	
+	}
+	
+	public Extracurricular (int actId, String title, String descr, int teacherId) {
+		this.actId = actId;
+		this.title = title;
+		this.descr = descr;
+		this.teacherId = teacherId; 
+	}
 	
 	public Time getStartTime() {
 		return startTime;

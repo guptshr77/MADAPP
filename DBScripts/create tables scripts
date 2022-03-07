@@ -33,8 +33,20 @@ CREATE TABLE message (
 	msg_date DATE
 );
 
-CREATE TABLE extracurricular (
+CREATE TABLE activities (
 	act_id SERIAL PRIMARY KEY,
+	title VARCHAR(30) NOT NULL,
+	descr VARCHAR (800),
+	teacher_id INT,
+	FOREIGN KEY (teacher_id)
+		REFERENCES suser (user_id)
+);
+
+CREATE TABLE extracurricular (
+	meeting_id SERIAL PRIMARY KEY, 
+	act_id INT,
+	FOREIGN KEY (act_id)
+		REFERENCES activities(act_id),
 	title VARCHAR (30) NOT NULL,
 	descr VARCHAR (800),
 	teacher_id INT,
@@ -55,14 +67,24 @@ CREATE TABLE user_class(
 		REFERENCES class (class_id)
 );
 
+CREATE TABLE user_message(
+	user_id INT,
+	FOREIGN KEY (user_id)
+		REFERENCES suser (user_id),
+	msg_id INT, 
+	FOREIGN KEY (msg_id)
+		REFERENCES message (msg_id)
+);
+
 CREATE TABLE user_extracurricular(
 	user_id INT,
 	FOREIGN KEY (user_id)
 		REFERENCES suser (user_id),
 	act_id INT, 
 	FOREIGN KEY (act_id)
-		REFERENCES extracurricular (act_id)
+		REFERENCES activities (act_id)
 );
+
 CREATE TABLE lunch_menu(
 	weekday_id VARCHAR PRIMARY KEY, 
 	fooditems VARCHAR (500) NOT NULL,
@@ -75,5 +97,6 @@ CREATE TABLE events(
 	dates TIMESTAMP NOT NULL,
 	title VARCHAR (20),
 	descr VARCHAR (200), 
-	color VARCHAR (20)
+	color VARCHAR (20)	
 );
+

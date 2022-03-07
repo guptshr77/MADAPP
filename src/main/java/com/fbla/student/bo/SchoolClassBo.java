@@ -21,4 +21,8 @@ public class SchoolClassBo {
 	public List<SchoolClass> getAllClasses(){
 		return classdao.getAllClasses();
 	}
+	
+	public List<SchoolClass> getClasses(int userId){
+		return classdao.getClasses(userId);
+	}
 }

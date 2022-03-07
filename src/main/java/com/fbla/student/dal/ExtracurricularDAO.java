@@ -74,28 +74,27 @@ public class ExtracurricularDAO {
 	}
 	
 	public List<Extracurricular> getAllActivities(){
-		String query = "SELECT act_id, title FROM extracurricular ORDER BY title";
-		
-		return jdbcTemplate.query(query,
-				(rs, rowNum) ->
-				new Extracurricular(
-						rs.getInt("act_id"),
-						rs.getString("title")));
-	}
-
-	public List<Extracurricular> getActivities(int userId) {
-		String query = "SELECT e.* FROM extracurricular e, user_extracurricular ue WHERE e.act_id = ue.act_id AND ue.user_id = ?";
+		String query = "SELECT act_id, title, descr, teacher_id FROM activities ORDER BY title";
 		
 		return jdbcTemplate.query(query,
 				(rs, rowNum) ->
 				new Extracurricular(
 						rs.getInt("act_id"),
 						rs.getString("title"),
-						rs.getString("elocation"),
 						rs.getString("descr"),
-						rs.getTime("time_start"),
-						rs.getTime("time_end"),
-						rs.getDate("edate")),
+						rs.getInt("teacher_id")));
+	}
+
+	public List<Extracurricular> getActivities(int userId) {
+		String query = "SELECT a.* FROM activities a, user_extracurricular ue WHERE a.act_id = ue.act_id AND ue.user_id = ?";
+		
+		return jdbcTemplate.query(query,
+				(rs, rowNum) ->
+				new Extracurricular(
+						rs.getInt("act_id"),
+						rs.getString("title"),
+						rs.getString("descr"),
+						rs.getInt("teacher_id")),
 				new Object[] {userId});
 	}
 	

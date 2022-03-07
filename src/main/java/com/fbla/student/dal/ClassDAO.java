@@ -45,4 +45,18 @@ public class ClassDAO {
 						rs.getInt("class_id"),
 						rs.getString("classname")));
 	}
+	
+	public List<SchoolClass> getClasses(int userId){
+		String query = "SELECT c.* FROM class c, user_class uc WHERE c.class_id = uc.class_id AND uc.user_id = ?";
+		
+		return jdbcTemplate.query(query,
+				(rs, rowNum) ->
+				new SchoolClass(
+						rs.getInt("class_id"),
+						rs.getString("classname"),
+						rs.getInt("roomnum"),
+						rs.getTime("start_time"),
+						rs.getTime("end_time")),
+				new Object[] {userId});
+	}
 }

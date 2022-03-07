@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCallback;
 import org.springframework.stereotype.Component;
 
+import com.fbla.student.model.LunchMenu;
 import com.fbla.student.model.User;
 
 
@@ -58,5 +59,17 @@ public class UserDAO {
         
         return user;
     }
+    
+	public List<User> teachers() {
+		String query = "SELECT * FROM suser WHERE usertype = false";
+		
+		return jdbcTemplate.query(query,
+				(rs, rowNum) ->
+				new User(
+						rs.getInt("user_id"),
+						rs.getString("firstname"),
+						rs.getString("lastname"),
+						rs.getString("username")));	
+	}
     
 }

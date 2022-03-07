@@ -37,4 +37,10 @@ public class UserController {
 			return (new User(0, "", ""));
 		}
 	}
+	
+	@GetMapping("/teachers")
+	public List<User> login() {
+
+		return userbo.teachers();
+	}
 }
