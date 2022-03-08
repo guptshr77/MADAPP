@@ -30,31 +30,34 @@ public class ExtracurricularDAO {
 		return jdbcTemplate.query(query,
 				(rs, rowNum) ->
 				new Extracurricular(
+						rs.getInt("meeting_id"),
 						rs.getInt("act_id"),
 						rs.getString("title"),
-						rs.getString("location"),
 						rs.getString("descr"),
-						rs.getTime("start_time"),
-						rs.getTime("end_time"),
-						rs.getDate("edate")),
+						rs.getInt("teacher_id"),
+						rs.getString("elocation"),
+						rs.getTime("time_start"),
+						rs.getTime("time_end"),
+						rs.getDate("edate"),
+						rs.getString("color")),
 				new Object[] {userId,date});
 	}
 	
-	public List<Extracurricular> monthlyExtracurricular(int userid, int month){
-		String query = "SELECT e.* FROM extracurricular e, user_extracurricular ue WHERE e.act_id = ue.act_id AND	EXTRACT(MONTH FROM e.edate)::integer = ? AND ue.user_id = ?";
-		
-		return jdbcTemplate.query(query,
-				(rs, rowNum) ->
-				new Extracurricular(
-						rs.getInt("act_id"),
-						rs.getString("title"),
-						rs.getString("location"),
-						rs.getString("descr"),
-						rs.getTime("start_time"),
-						rs.getTime("end_time"),
-						rs.getDate("edate")),
-				new Object[] {userid,month});
-	}
+//	public List<Extracurricular> monthlyExtracurricular(int userid, int month){
+//		String query = "SELECT e.* FROM extracurricular e, user_extracurricular ue WHERE e.act_id = ue.act_id AND	EXTRACT(MONTH FROM e.edate)::integer = ? AND ue.user_id = ?";
+//		
+//		return jdbcTemplate.query(query,
+//				(rs, rowNum) ->
+//				new Extracurricular(
+//						rs.getInt("act_id"),
+//						rs.getString("title"),
+//						rs.getString("location"),
+//						rs.getString("descr"),
+//						rs.getTime("start_time"),
+//						rs.getTime("end_time"),
+//						rs.getDate("edate")),
+//				new Object[] {userid,month});
+//	}
 	
 	public String addActivity(int userId, int actId) {
 		String stmt = "INSERT INTO user_extracurricular(user_id, act_id) VALUES(?,?)";

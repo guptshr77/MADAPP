@@ -38,9 +38,9 @@ public class CalendarBo {
 			
 			List<SchoolClass> schedule = scheduledao.dailySchedule(userid);
 			List<Event> events = eventsdao.eventsMonthly(month);
-			List<Extracurricular> acts = actdao.monthlyExtracurricular(userid, month);
+//			List<Extracurricular> acts = actdao.monthlyExtracurricular(userid, month);
 			
-			calendar = new Calendar(schedule, events, acts);
+//			calendar = new Calendar(schedule, events, acts);
 			
 		}else if(type.equals("daily")){
 			

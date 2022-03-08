@@ -12,6 +12,8 @@ public class Extracurricular {
 	private Time endTime;
 	private Date date;
 	private int teacherId;
+	private int meetingId;
+	private String color;
 	
 	public Extracurricular(int actId, String title) {
 		super();
@@ -19,21 +21,34 @@ public class Extracurricular {
 		this.title = title;
 	}
 
-	public Extracurricular(int actId, String title, String location, String descr, Time startTime, Time endTime, Date date) {
-		this.actId = actId;
-		this.title = title;
-		this.location = location;
-		this.descr = descr;
-		this.startTime = startTime;
-		this.endTime = endTime;
-		this.date = date;
-	}
+//	public Extracurricular(int actId, String title, String location, String descr, Time startTime, Time endTime, Date date) {
+//		this.actId = actId;
+//		this.title = title;
+//		this.location = location;
+//		this.descr = descr;
+//		this.startTime = startTime;
+//		this.endTime = endTime;
+//		this.date = date;
+//	}
 	
 	public Extracurricular (int actId, String title, String descr, int teacherId) {
 		this.actId = actId;
 		this.title = title;
 		this.descr = descr;
 		this.teacherId = teacherId; 
+	}
+	
+	public Extracurricular(int meetingId, int actId, String title, String descr, int teacherId, String location, Time startTime, Time endTime, Date date, String color) {
+		this.meetingId = meetingId;
+		this.actId = actId;
+		this.title = title;
+		this.descr = descr;
+		this.teacherId = teacherId;
+		this.location = location;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.date = date;
+		this.color = color;
 	}
 	
 	public Time getStartTime() {
