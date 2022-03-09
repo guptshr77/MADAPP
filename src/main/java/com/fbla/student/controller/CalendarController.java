@@ -30,7 +30,8 @@ public class CalendarController {
 	@GetMapping("/calendar")
 	public Calendar calendar(@RequestParam(value = "userid", defaultValue = "null")int userid,
 						@RequestParam(value = "date", defaultValue = "null" ) String cdate,
-						@RequestParam(value = "type", defaultValue = "daily") String type) {	
+						@RequestParam(value = "type", defaultValue = "daily") String type) {
+		System.out.println(userid +  " ," + cdate + " ," +type);
 		if (!cdate.equals("null")) 
 			return calendarbo.getCalendar(type, Date.valueOf(cdate), userid);
 		else
