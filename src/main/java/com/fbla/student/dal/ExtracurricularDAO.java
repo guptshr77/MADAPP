@@ -60,6 +60,9 @@ public class ExtracurricularDAO {
 //	}
 	
 	public String addActivity(int userId, int actId) {
+		if(getUserActCount(userId, actId) != 0) {
+			return "Activity added";
+		}
 		
 		String stmt = "INSERT INTO user_extracurricular(user_id, act_id) VALUES(?,?)";
 		
@@ -77,13 +80,11 @@ public class ExtracurricularDAO {
 		return "Activity added";
 	}
 	
-//	private int checkAct (int userId, int actId) {
-//		String query = "SELECT COUNT(*) FROM user_extracurricular WHERE act_id = ? and user_id = ? ";
-//		
-//		return jdbcTemplate.query(query)
-//				new Integer(rs.getInt("count")),
-//				new Object[] {actId, userId});
-//	}
+	private int getUserActCount (int userId, int actId) {
+		String query = "SELECT COUNT(*) FROM user_extracurricular WHERE act_id = ? and user_id = ? ";
+		
+		return jdbcTemplate.queryForObject(query, new Object[] {actId, userId}, Integer.class);
+	}
 	
 	public List<Extracurricular> getAllActivities(){
 		String query = "SELECT act_id, title, descr, teacher_id FROM activities ORDER BY title";

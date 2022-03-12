@@ -32,7 +32,7 @@ public class MessageController {
 		
 		return messagebo.sendMessage(message);
 	}
-	
+	 
 	@GetMapping("/getMessage")
 	public List<Message> getMessage(@RequestParam(value = "user_id", defaultValue = "null") int userId) {
 		return messagebo.getMessages(userId);

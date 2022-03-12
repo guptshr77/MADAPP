@@ -20,6 +20,10 @@ public class ClassDAO {
 	private JdbcTemplate jdbcTemplate;
 	
 	public String addClass(int userId, int classId) {
+		if(getUserClassCount(userId, classId) != 0) {
+			return "Class added";
+		}
+		
 		String stmt = "INSERT INTO user_class(user_id, class_id) VALUES(?,?)";
 		
 		jdbcTemplate.execute(stmt, new PreparedStatementCallback<Boolean>() {
@@ -34,6 +38,12 @@ public class ClassDAO {
 		});
 		
 		return "Class added";
+	}
+	
+	private int getUserClassCount (int userId, int classId) {
+		String query = "SELECT COUNT(*) FROM user_class WHERE class_id = ? and user_id = ? ";
+		
+		return jdbcTemplate.queryForObject(query, new Object[] {classId, userId}, Integer.class);
 	}
 	
 	public List<SchoolClass> getAllClasses(){
