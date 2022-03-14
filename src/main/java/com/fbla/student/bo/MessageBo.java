@@ -23,6 +23,7 @@ public class MessageBo {
 	}
 	
 	public List<Message> getSentMessages(int userId){
-		return messagedao.getSentMessages(userId);
+		List<Message> messages = messagedao.getSentMessages(userId);
+		return messages;
 	}
 }

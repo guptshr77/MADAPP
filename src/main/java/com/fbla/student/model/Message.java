@@ -38,14 +38,6 @@ public class Message {
 		this.msgContent = msgContent;
 	}
 
-	public Message(User userSent, int msgId, String subject, String msgContent, Date datetime) {
-		this.userSent = userSent;
-		this.msgId = msgId;
-		this.subject = subject;
-		this.msgContent = msgContent;
-		this.datetime = datetime;
-	}
-
 	public int getMsgId() {
 		return msgId;
 	}
