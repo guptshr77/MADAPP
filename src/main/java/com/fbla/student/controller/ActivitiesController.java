@@ -17,7 +17,7 @@ import com.fbla.student.model.Extracurricular;
 import com.fbla.student.model.User;
 
 @RestController
-public class CalendarController {
+public class ActivitiesController {
 	
 	
 	private static final String template = "%s, %s, %s";
@@ -27,15 +27,21 @@ public class CalendarController {
 	private CalendarBo calendarbo;
 	
 	
-	@GetMapping("/calendar")
-	public Calendar calendar(@RequestParam(value = "userid", defaultValue = "null")int userid,
-						@RequestParam(value = "date", defaultValue = "null" ) String cdate,
-						@RequestParam(value = "type", defaultValue = "daily") String type) {
-		System.out.println(userid +  " ," + cdate + " ," +type);
-		if (!cdate.equals("null")) 
-			return calendarbo.getCalendar(type, Date.valueOf(cdate), userid);
-		else
-			return calendarbo.getCalendar(type, (new Date(System.currentTimeMillis())), userid);
+	@GetMapping("/getallactivities")
+	public List<Extracurricular> getAllActivities() {
+		return calendarbo.getAllActivities();
+	}
+
+	
+	@GetMapping("/getuseractivity")
+	public List<Extracurricular> getUserActivities(@RequestParam(value = "userid", defaultValue = "null") int userId) {
+		return calendarbo.getActivities(userId);
+	}
+	
+	@GetMapping("/addactivity")
+	public String addSchedule(@RequestParam(value = "userid", defaultValue = "null") int userId,
+							@RequestParam(value = "act_id", defaultValue = "null") int actId) {
+		return calendarbo.addActivity(userId, actId);
 	}
 	
 	
