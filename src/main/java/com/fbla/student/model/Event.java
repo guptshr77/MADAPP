@@ -1,15 +1,15 @@
 package com.fbla.student.model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Event {
 	private int eventId;
-	private Date dateTime;
+	private Timestamp dateTime;
 	private String description;
 	private String color;
 	private String title;
 	
-	public Event(int eventId, Date dateTime, String description, String color, String title) {
+	public Event(int eventId, Timestamp dateTime, String description, String color, String title) {
 		this.eventId = eventId;
 		this.dateTime = dateTime;
 		this.description = description;
@@ -19,7 +19,7 @@ public class Event {
 	
 	
 
-	public Event(int eventId, Date dateTime, String title, String description) {
+	public Event(int eventId, Timestamp dateTime, String title, String description) {
 		this.eventId = eventId;
 		this.dateTime = dateTime;
 		this.title = title;
@@ -34,10 +34,10 @@ public class Event {
 	public void setEventId(int eventId) {
 		this.eventId = eventId;
 	}
-	public Date getDateTime() {
+	public Timestamp getDateTime() {
 		return dateTime;
 	}
-	public void setDateTime(Date dateTime) {
+	public void setDateTime(Timestamp dateTime) {
 		this.dateTime = dateTime;
 	}
 	public String getDescription() {

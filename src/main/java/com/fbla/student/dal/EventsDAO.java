@@ -23,13 +23,13 @@ public class EventsDAO {
 	private JdbcTemplate jdbcTemplate;
 	
 	public List<Event> eventsDaily(Date date){
-		String query = "SELECT event_id, dates, title, descr FROM events WHERE dates =?";
+		String query = "SELECT event_id, dates, title, descr FROM events WHERE DATE(dates) =?";
 		
 		return jdbcTemplate.query(query,
 				(rs, rowNum) ->
 				new Event(
 						rs.getInt("event_id"),
-						rs.getDate("dates"),
+						rs.getTimestamp("dates"),
 						rs.getString("title"),
 						rs.getString("descr")),
 				new Object[] {date});
@@ -42,7 +42,7 @@ public class EventsDAO {
 				(rs, rowNum) ->
 				new Event(
 						rs.getInt("event_id"),
-						rs.getDate("dates"),
+						rs.getTimestamp("dates"),
 						rs.getString("title"),
 						rs.getString("descr")),
 				new Object[] {month});

@@ -44,12 +44,8 @@ public class CalendarBo {
 			
 		}else if(type.equals("daily")){
 			List<SchoolClass> schedule = null;
-			System.out.println(date.toString());
-			if(!(date.toString().contains("Mon")) || 
-					(!(date.toString().contains("Tue"))) || 
-					(!(date.toString().contains("Wed"))) || 
-					(!(date.toString().contains("Thu"))) || 
-					(!(date.toString().contains("Fri")))){
+			System.out.println(date.getDay());
+			if(date.getDay() != 0 && date.getDay() != 6 ){
 				schedule = scheduledao.dailySchedule(userid);	
 			}
 			
