@@ -43,8 +43,16 @@ public class CalendarBo {
 //			calendar = new Calendar(schedule, events, acts);
 			
 		}else if(type.equals("daily")){
+			List<SchoolClass> schedule = null;
+			System.out.println(date.toString());
+			if(!(date.toString().contains("Mon")) || 
+					(!(date.toString().contains("Tue"))) || 
+					(!(date.toString().contains("Wed"))) || 
+					(!(date.toString().contains("Thu"))) || 
+					(!(date.toString().contains("Fri")))){
+				schedule = scheduledao.dailySchedule(userid);	
+			}
 			
-			List<SchoolClass> schedule = scheduledao.dailySchedule(userid);
 			List<Event> events = eventsdao.eventsDaily(date);
 			List<Extracurricular> acts = actdao.dailyExtracurricular(userid, date);
 				
