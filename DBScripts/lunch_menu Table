@@ -1,0 +1,29 @@
+INSERT INTO lunch_menu (weekday_id, fooditems, grabNGo, milks)
+	VALUES ('Monday', 
+			'Cinnamon French Toast', 
+			'Hamburger',
+			'Chocolate Milk');
+					
+INSERT INTO lunch_menu (weekday_id, fooditems, grabNGo, milks)
+	VALUES ('Tuesday',
+			'Taco Nachos',
+			'Hamburger',
+			'Chocolate Milk');
+
+INSERT INTO lunch_menu (weekday_id, fooditems, grabNGo, milks)
+	VALUES ('Wednesday',
+			'Mashed Potato Bowl',
+			'Hamburger',
+			'Chocolate Milk');
+					
+INSERT INTO lunch_menu (weekday_id, fooditems, grabNGo, milks)
+	VALUES ('Thursday',
+			'Asian Orange Chicken',
+			'Hamburger',
+			'Chocolate Milk');
+					
+INSERT INTO lunch_menu (weekday_id, fooditems, grabNGo, milks)
+	VALUES ('Friday',
+			'Mac&Cheese',
+			'Hamburger',
+			'Chocolate Milk');
