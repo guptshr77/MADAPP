@@ -2,8 +2,9 @@ package com.fbla.student.model;
 
 import java.sql.Date;
 import java.sql.Time;
-
+//extracurricular activities model
 public class Extracurricular {
+//components
 	private int actId;
 	private String title;
 	private String location;
@@ -14,22 +15,12 @@ public class Extracurricular {
 	private int teacherId;
 	private int meetingId;
 	private String color;
-	
+//constructors	
 	public Extracurricular(int actId, String title) {
 		super();
 		this.actId = actId;
 		this.title = title;
 	}
-
-//	public Extracurricular(int actId, String title, String location, String descr, Time startTime, Time endTime, Date date) {
-//		this.actId = actId;
-//		this.title = title;
-//		this.location = location;
-//		this.descr = descr;
-//		this.startTime = startTime;
-//		this.endTime = endTime;
-//		this.date = date;
-//	}
 	
 	public Extracurricular (int actId, String title, String descr, int teacherId) {
 		this.actId = actId;
@@ -50,7 +41,7 @@ public class Extracurricular {
 		this.date = date;
 		this.color = color;
 	}
-	
+//getters and setters	
 	public Time getStartTime() {
 		return startTime;
 	}

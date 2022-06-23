@@ -18,7 +18,7 @@ import java.util.List;
 
 @Component
 public class CalendarBo {
-	
+//wired to DAO Classes objects	
 	@Autowired
 	private EventsDAO eventsdao;
 	@Autowired
@@ -31,17 +31,14 @@ public class CalendarBo {
 		Calendar calendar = null;
 		
 		System.out.println("Date:" + date.toString());
-		
+//get monthly calendar		
 		if(type.equals("monthly")) {
 			
 			int month = date.getMonth();
 			
 			List<SchoolClass> schedule = scheduledao.dailySchedule(userid);
 			List<Event> events = eventsdao.eventsMonthly(month);
-//			List<Extracurricular> acts = actdao.monthlyExtracurricular(userid, month);
-			
-//			calendar = new Calendar(schedule, events, acts);
-			
+//get daily calendar			
 		}else if(type.equals("daily")){
 			List<SchoolClass> schedule = null;
 			System.out.println(date.getDay());
@@ -58,15 +55,15 @@ public class CalendarBo {
 		
 		return calendar;
 	}
-	
+//get all extracurricular activities offered
 	public List<Extracurricular> getAllActivities(){
 		return actdao.getAllActivities();
 	}
-	
+//add extracurricular activity to user's schedule	
 	public String addActivity(int userId, int actId) {
 		return actdao.addActivity(userId, actId);
 	}
-
+//get activities that the user is a part of
 	public List<Extracurricular> getActivities(int userId) {
 		return actdao.getActivities(userId);
 	}

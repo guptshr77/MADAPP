@@ -15,35 +15,27 @@ import com.fbla.student.model.SchoolClass;
 @RestController
 public class SchoolClassController {
 	
-	
+//taking input	
 	private static final String template = "%s, %s, %s, %s";
 	private final AtomicLong counter = new AtomicLong();
-	
+//wired to school Class Business Object	
 	@Autowired
 	private SchoolClassBo schoolClassBo;
-	
+//when adding a class	
 	@GetMapping("/addschedule")
 	public String addSchedule(@RequestParam(value = "user_id", defaultValue = "null") int userId,
 							@RequestParam(value = "class_id", defaultValue = "null") int classId) {
 		return schoolClassBo.addClass(userId, classId);
 	}
-	
+//get user schedule	
 	@GetMapping("/getschedule")
 	public List<SchoolClass> addSchedule(@RequestParam(value = "user_id", defaultValue = "null") int userId) {
 		return schoolClassBo.getClasses(userId);
 	}
-	
+//get all the classes offered	
 	@GetMapping("/getallclasses")
 	public List<SchoolClass> getAllClasses() {
 		 return schoolClassBo.getAllClasses();
 	}
-	
-//	@GetMapping("/classinput")
-//	public void classInput(@RequestParam(value = "classname", defaultValue = "null") String className,
-//			@RequestParam(value = "roomnum", defaultValue = "null") int roomNum,
-//			@RequestParam(value = "starttime", defaultValue = "null")Time startTime,
-//			@RequestParam(value = "endtime", defaultValue = "null")Time endTime) {
-//		Class classobj = new Class(className, roomNum, startTime, endTime);
-//		String message = classinputbo.addClass(classobj);
-//	}
+
 }

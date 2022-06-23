@@ -1,14 +1,14 @@
 package com.fbla.student.model;
-
+//user model
 public class User {
 	private String firstName;
 	private String lastName;
 	private String username;
 	private String password;
 	private int userId;
-	
+//constructors	
 	public User () {
-		
+		//null constructors DO NOT DELETE
 	}
 	public User(int userId, String firstname, String lastname) {
 		this.userId = userId;
@@ -25,9 +25,8 @@ public class User {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.username = username;
-	}
-	
-	
+	}	
+//getters and setters	
 	public String getFirstName() {
 		return firstName;
 	}

@@ -4,19 +4,19 @@ import java.util.List;
 import com.fbla.student.model.SchoolClass;
 import com.fbla.student.model.Event;
 import com.fbla.student.model.Extracurricular;
-
+//calendar model
 public class Calendar {
-
+//components
 	private List<SchoolClass> classes;
 	private List<Event> events;
 	private List<Extracurricular> extracurriculars;
-	
+//constuctor	
 	public Calendar(List<SchoolClass> classes, List<Event> events, List<Extracurricular> extracurriculars) {
 		this.classes = classes;
 		this.events = events;
 		this.extracurriculars = extracurriculars;
 	}
-	
+//getter and setters	
 	public List<SchoolClass> getClasses() {
 		return classes;
 	}

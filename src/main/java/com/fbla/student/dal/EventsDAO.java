@@ -18,10 +18,10 @@ import com.fbla.student.model.Event;
 
 @Component
 public class EventsDAO {
-
+//wired to jdbc template that connects to database and makes object and returns it
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	
+//get all school events happing on the date	
 	public List<Event> eventsDaily(Date date){
 		String query = "SELECT event_id, dates, title, descr FROM events WHERE DATE(dates) =?";
 		
@@ -34,7 +34,7 @@ public class EventsDAO {
 						rs.getString("descr")),
 				new Object[] {date});
 	}
-	
+//get events happening this month	
 	public List<Event> eventsMonthly(int month) {
 		String query = "SELECT * FROM events WHERE EXTRACT(MONTH FROM dates)::integer = ?";
 		

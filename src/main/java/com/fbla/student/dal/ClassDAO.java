@@ -15,10 +15,10 @@ import com.fbla.student.model.Message;
 
 @Component
 public class ClassDAO {
-	
+//wired to jdbc template that connects to database and makes object and returns it	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	
+//adds class to user's scjedule	
 	public String addClass(int userId, int classId) {
 		if(getUserClassCount(userId, classId) != 0) {
 			return "Class added";
@@ -39,13 +39,13 @@ public class ClassDAO {
 		
 		return "Class added";
 	}
-	
+//check if the user has already added a class	
 	private int getUserClassCount (int userId, int classId) {
 		String query = "SELECT COUNT(*) FROM user_class WHERE class_id = ? and user_id = ? ";
 		
 		return jdbcTemplate.queryForObject(query, new Object[] {classId, userId}, Integer.class);
 	}
-	
+//get all classes the user is a part of 	
 	public List<SchoolClass> getAllClasses(){
 		String query = "SELECT * FROM class ORDER BY classname";
 		
@@ -55,7 +55,7 @@ public class ClassDAO {
 						rs.getInt("class_id"),
 						rs.getString("classname")));
 	}
-	
+//get all the classes the user is a part of	
 	public List<SchoolClass> getClasses(int userId){
 		String query = "SELECT c.* FROM class c, user_class uc WHERE c.class_id = uc.class_id AND uc.user_id = ?";
 		

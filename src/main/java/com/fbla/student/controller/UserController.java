@@ -15,16 +15,13 @@ import com.fbla.student.model.User;
 @RestController
 public class UserController {
 
-
+//taking input
 	private static final String template = "%s, %s";
 	private final AtomicLong counter = new AtomicLong();
-
+//wired to user Business object
 	@Autowired
 	private UserBo userbo;
-
-	//@Autowired
-	//private CalendarController calendar;
-
+//to log in
 	@GetMapping("/login")
 	public User login(@RequestParam(value = "username", defaultValue = "null") String username,
 			@RequestParam(value = "password", defaultValue = "null") String password) {
@@ -32,12 +29,12 @@ public class UserController {
 
 		User ruser = userbo.login(user);
 		if(ruser != null) {
-			return ruser;
+			return ruser; //if user is returned login
 		}else {
-			return (new User(0, "", ""));
+			return (new User(0, "", ""));//else return a null object
 		}
 	}
-	
+//get list of all teachers	
 	@GetMapping("/teachers")
 	public List<User> login() {
 

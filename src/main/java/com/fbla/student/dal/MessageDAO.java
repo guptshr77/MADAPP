@@ -21,7 +21,7 @@ public class MessageDAO {
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	
+//to send message	
 	public String sendMessage(Message message) {
 		String stmt = "INSERT INTO message(sender_id, recipient_id, subject, msg_content, msg_date) VALUES(?, ?, ?, ?, ?)";
 		
@@ -42,7 +42,7 @@ public class MessageDAO {
 		return "Message Sent";
 		
 	}
-	
+//user's recieved messages	
 	public List<Message> getMessages(int userId){
 		String query = "SELECT u.user_id, u.firstname, u.lastname, m.subject, m.msg_content, m.msg_id, m.msg_date FROM message m, suser u WHERE m.sender_id = u.user_id AND recipient_id = ? ORDER BY m.msg_id DESC";
 		
@@ -56,9 +56,7 @@ public class MessageDAO {
 						rs.getDate("msg_date")),
 				new Object[] {userId});
 	}
-
-
-
+//get messages the user has sent in the past
 	public List<Message> getSentMessages(int userId){
 		String query = "SELECT u.user_id, u.firstname, u.lastname, m.subject, m.msg_content, m.msg_id, m.msg_date FROM message m, suser u WHERE m.recipient_id = u.user_id AND sender_id = ? ORDER BY m.msg_id DESC";
 		System.out.println(query);

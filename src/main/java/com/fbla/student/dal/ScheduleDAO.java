@@ -20,10 +20,10 @@ import com.fbla.student.model.SchoolClass;
 
 @Component
 public class ScheduleDAO {
-	
+//wired to jdbc template that connects to database and makes object and returns it	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	
+//get user's daily schedule	
 	public List<SchoolClass> dailySchedule(int userid){
 		String query = "SELECT c.* FROM class c, user_class uc WHERE c.class_id = uc.class_id AND uc.user_id = ?";
 		

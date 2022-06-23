@@ -17,12 +17,10 @@ import com.fbla.student.model.User;
 
 @Component
 public class UserDAO {
-	
+//wired to jdbc template that connects to database and makes object and returns it	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	
-	//'EVERYTHING IS A STRING!!!!!!!! - Gabriela Nicole Waszak 2022-01-22'
-
+//user login
 	public User login(User user) {
 		String query = "SELECT user_id, firstname, lastname, username FROM suser WHERE username=? AND password=?";
 				
@@ -39,7 +37,7 @@ public class UserDAO {
 		else
 			return null;
 	}
-	
+//add new user	
     public User addUser(User user){
         String stmt = "INSERT INTO suser(userid, username, password, firstname, lastname) VALUES(?, ?, ?, ?, ?)";
         
@@ -59,7 +57,7 @@ public class UserDAO {
         
         return user;
     }
-    
+//create a new teacher     
 	public List<User> teachers() {
 		String query = "SELECT * FROM suser WHERE usertype = false";
 		

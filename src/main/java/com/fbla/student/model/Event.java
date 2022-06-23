@@ -1,14 +1,15 @@
 package com.fbla.student.model;
 
 import java.sql.Timestamp;
-
+//school events
 public class Event {
+//components
 	private int eventId;
 	private Timestamp dateTime;
 	private String description;
 	private String color;
 	private String title;
-	
+//constructors	
 	public Event(int eventId, Timestamp dateTime, String description, String color, String title) {
 		this.eventId = eventId;
 		this.dateTime = dateTime;
@@ -16,18 +17,13 @@ public class Event {
 		this.color = color;
 		this.title = title;
 	}
-	
-	
-
 	public Event(int eventId, Timestamp dateTime, String title, String description) {
 		this.eventId = eventId;
 		this.dateTime = dateTime;
 		this.title = title;
 		this.description = description;
 	}
-
-
-
+//getters and setters
 	public int getEventId() {
 		return eventId;
 	}

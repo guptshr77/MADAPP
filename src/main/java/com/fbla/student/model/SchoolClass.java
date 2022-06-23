@@ -1,15 +1,15 @@
 package com.fbla.student.model;
 
 import java.sql.Time;
-
+//classes model
 public class SchoolClass {
-
+//components
 	private int classId;
 	private String classname;
 	private int roomnum;
 	private Time startTime;
 	private Time endTime;
-	
+//constructors	
 	public SchoolClass(int classId, String classname, int roomnum, Time startTime, Time endTime) {
 		this.classId = classId;
 		this.classname = classname;
@@ -22,7 +22,7 @@ public class SchoolClass {
 		this.classId = classId;
 		this.classname = classname;
 	}
-	
+//getters and setters	
 	public int getClassId() {
 		return classId;
 	}

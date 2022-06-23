@@ -20,10 +20,10 @@ import com.fbla.student.model.SchoolClass;
 
 @Component
 public class ExtracurricularDAO {
-	
+//wired to jdbc template that connects to database and makes object and returns it	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	
+//get the xtracurricular activities happening on the date	
 	public List<Extracurricular> dailyExtracurricular(int userId, Date date){
 		String query = "SELECT e.* FROM extracurricular e, user_extracurricular ue WHERE e.act_id = ue.act_id AND ue.user_id = ? AND e.edate = ?";
 		
@@ -42,24 +42,9 @@ public class ExtracurricularDAO {
 						rs.getString("color")),
 				new Object[] {userId,date});
 	}
-	
-//	public List<Extracurricular> monthlyExtracurricular(int userid, int month){
-//		String query = "SELECT e.* FROM extracurricular e, user_extracurricular ue WHERE e.act_id = ue.act_id AND	EXTRACT(MONTH FROM e.edate)::integer = ? AND ue.user_id = ?";
-//		
-//		return jdbcTemplate.query(query,
-//				(rs, rowNum) ->
-//				new Extracurricular(
-//						rs.getInt("act_id"),
-//						rs.getString("title"),
-//						rs.getString("location"),
-//						rs.getString("descr"),
-//						rs.getTime("start_time"),
-//						rs.getTime("end_time"),
-//						rs.getDate("edate")),
-//				new Object[] {userid,month});
-//	}
-	
+//add activity to a user's schedule
 	public String addActivity(int userId, int actId) {
+	//if the user had already added the the activity don't add again
 		if(getUserActCount(userId, actId) != 0) {
 			return "Activity added";
 		}
@@ -79,13 +64,13 @@ public class ExtracurricularDAO {
 		
 		return "Activity added";
 	}
-	
+//check if the user has already added the activity to their schedule	
 	private int getUserActCount (int userId, int actId) {
 		String query = "SELECT COUNT(*) FROM user_extracurricular WHERE act_id = ? and user_id = ? ";
 		
 		return jdbcTemplate.queryForObject(query, new Object[] {actId, userId}, Integer.class);
 	}
-	
+//get all activities offered	
 	public List<Extracurricular> getAllActivities(){
 		String query = "SELECT act_id, title, descr, teacher_id FROM activities ORDER BY title";
 		
@@ -97,7 +82,7 @@ public class ExtracurricularDAO {
 						rs.getString("descr"),
 						rs.getInt("teacher_id")));
 	}
-
+//get activities the user is a part of
 	public List<Extracurricular> getActivities(int userId) {
 		String query = "SELECT a.* FROM activities a, user_extracurricular ue WHERE a.act_id = ue.act_id AND ue.user_id = ?";
 		

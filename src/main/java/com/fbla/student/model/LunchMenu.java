@@ -1,19 +1,19 @@
 package com.fbla.student.model;
-
+//lunch menu
 public class LunchMenu {
+//components
 	private String day;
 	private String foodItems;
 	private String grabNGo;
 	private String milks;
-	
-	
-	
+//constructors	
 	public LunchMenu(String day, String foodItems, String grabNGo, String milks) {
 		this.day = day;
 		this.foodItems = foodItems;
 		this.grabNGo = grabNGo;
 		this.milks = milks;
 	}
+//getters and setters
 	public String getDay() {
 		return day;
 	}

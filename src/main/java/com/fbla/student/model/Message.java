@@ -3,8 +3,9 @@ package com.fbla.student.model;
 import java.sql.Date;
 
 import com.fbla.student.model.User;
-
+//messages model
 public class Message {
+//components
 	private int msgId;
 	private int userId;
 	private int recipientUserId;
@@ -13,7 +14,7 @@ public class Message {
 	private User user;
 	private Date datetime; 
 	private User userSent;
-	
+//constructors	
 	public Message(int msgId,int userId ,int recipientUserId, String subject, String msgContent) {
 		this.msgId = msgId;
 		this.userId = userId;
@@ -37,7 +38,7 @@ public class Message {
 		this.subject = subject;
 		this.msgContent = msgContent;
 	}
-
+//getters and setters
 	public int getMsgId() {
 		return msgId;
 	}

@@ -19,14 +19,15 @@ import com.fbla.student.model.User;
 @RestController
 public class CalendarController {
 	
-	
+	//'EVERYTHING IS A STRING!!!!!!!! - Gabriela Nicole Waszak 2022-01-22'
+//taking input
 	private static final String template = "%s, %s, %s";
 	private final AtomicLong counter = new AtomicLong();
-	
+//wired to calendar Business Object	
 	@Autowired
 	private CalendarBo calendarbo;
 	
-	
+//url extension to get user's calendar	
 	@GetMapping("/calendar")
 	public Calendar calendar(@RequestParam(value = "userid", defaultValue = "null")int userid,
 						@RequestParam(value = "date", defaultValue = "null" ) String cdate,

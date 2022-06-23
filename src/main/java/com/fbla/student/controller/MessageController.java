@@ -15,13 +15,13 @@ import com.fbla.student.model.Message;
 @RestController
 public class MessageController {
 	
-	
+//taking input	
 	private static final String template = "%s, %s, %s, %s";
 	private final AtomicLong counter = new AtomicLong();
-	
+//wired to message business object	
 	@Autowired
 	private MessageBo messagebo;
-	
+//url extension to send a message	
 	@GetMapping("/sendMessage")
 	public String sendMessage(@RequestParam(value = "user_id", defaultValue = "null") String userid,
 						@RequestParam(value = "recipient_id", defaultValue = "null") String recipeintId,
@@ -32,12 +32,12 @@ public class MessageController {
 		
 		return messagebo.sendMessage(message);
 	}
-	 
+//get messages of the user	 
 	@GetMapping("/getMessage")
 	public List<Message> getMessage(@RequestParam(value = "user_id", defaultValue = "null") int userId) {
 		return messagebo.getMessages(userId);
 	}
-	
+//get the messages the user has sent in the past	
 	@GetMapping("/getSentMessages")
 	public List<Message> getSentMessages(@RequestParam(value = "user_id", defaultValue = "null") int userId) {
 		return messagebo.getSentMessages(userId);

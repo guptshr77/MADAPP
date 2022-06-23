@@ -10,10 +10,10 @@ import com.fbla.student.model.LunchMenu;
 
 @Component
 public class LunchMenuDAO {
-	
+//wired to jdbc template that connects to database and makes object and returns it	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	
+//get school lunch menu	
 	public List<LunchMenu> getMenu() {
 		String query = "SELECT * FROM lunch_menu;";
 		

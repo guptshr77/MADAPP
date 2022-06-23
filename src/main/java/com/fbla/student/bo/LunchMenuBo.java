@@ -10,10 +10,10 @@ import com.fbla.student.model.LunchMenu;
 
 @Component
 public class LunchMenuBo {
-	
+//object wired to DAO 	
 	@Autowired
 	private LunchMenuDAO lunchMenuDAO;
-	
+//get the school lunchmenu	
 	public List<LunchMenu> getMenu() {
 		return lunchMenuDAO.getMenu();
 	}

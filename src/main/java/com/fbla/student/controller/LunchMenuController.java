@@ -12,10 +12,10 @@ import com.fbla.student.model.LunchMenu;
 
 @RestController
 public class LunchMenuController {
-	
+//wired to lunchmenu Business Object	
 	@Autowired
 	private LunchMenuBo lunchMenuBO;
-
+//url extension to lunch menu
 	@GetMapping ("/lunchmenu")
 	public List<LunchMenu> getLunchMenu() {
 		return lunchMenuBO.getMenu();
